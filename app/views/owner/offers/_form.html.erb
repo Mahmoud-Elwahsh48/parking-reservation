@@ -1,0 +1,37 @@
+<div class='card shadow rounded p-4 border-0'>
+  <%= form_for @offer, url: { action: action, method: method }, html: { class: "form-block" }  do |f| %>
+    <div class="form-group">
+      <%= f.label :starts %>
+      <%= f.date_field :starts, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :ends %>
+      <%= f.date_field :ends, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :days %>
+      <%= f.number_field :days, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :capacity %>
+      <%= f.number_field :capacity, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :parking_price %>
+      <%= f.number_field :parking_price, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :discount %>
+      <%= f.number_field :discount, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit 'Create', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

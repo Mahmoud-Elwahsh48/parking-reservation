@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ParkingReservation</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Parking Reservation System</a>
+      <% if user_signed_in? %>
+        <div class="form-inline my-2 my-lg-0">
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %>
+          <%= link_to "Deactivate", user_registration_path, method: :delete, class: 'nav-item nav-link' %>
+        </div>
+      <% elsif visitor_signed_in? %>
+        <div class="form-inline my-2 my-lg-0">
+          <%= link_to "Sign Out", destroy_visitor_session_path, method: :delete, class: 'nav-item nav-link' %>
+          <%= link_to "Deactivate", visitor_registration_path, method: :delete, class: 'nav-item nav-link' %>
+        </div>
+      <% else %>
+        <div class="form-inline my-2 my-lg-0">
+          <%= link_to "Login - Visitor", new_visitor_session_path, class: 'btn btn-secondary ml-2' %>
+          <%= link_to "Login - Owner", new_user_session_path, class: 'btn btn-secondary ml-2' %>
+        </div>
+      <% end %>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

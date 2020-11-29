@@ -1,0 +1,32 @@
+<h1>OFFERS - VISITORS</h1>
+
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Starts</th>
+      <th scope="col">Ends</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">Parking Price</th>
+      <th scope="col">Discount</th>
+      <th scope="col">Select</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @offers.each do |offer| %>
+    <tr>
+      <th scope="row"><%= offer.id %></th>
+      <td><%= offer.starts %></td>
+      <td><%= offer.ends %></td>
+      <td><%= offer.days %></td>
+      <td><%= offer.capacity %></td>
+      <td><%= offer.parking_price %></td>
+      <td><%= offer.discount %></td>
+      <td><%= link_to "Select this Offer", "#" %></td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
