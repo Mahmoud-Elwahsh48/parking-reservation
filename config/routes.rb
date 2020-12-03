@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   }
   devise_for :users
 
-  resources :offers, only: [:index]
+  resources :offers, only: [:index] do
+    member do
+      get :select, :delete
+    end
+  end
 
   namespace :owner do
     resources :offers, only: %i[new create edit update destroy index]

@@ -1,5 +1,12 @@
-<%= link_to "Offers", owner_offers_path, class: 'btn btn-success' %>
+<div class="container pt-4 pb-4">
 
-<h1>Edit Offer - Owner</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Owner</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="<%= owner_offers_path %>">Offers</a></li>
+      <li class="breadcrumb-item active" aria-current="page"><a href="#"></a>Edit Offer</li>
+    </ol>
+  </nav>
 
-<%= render "form", url: owner_offer_path, action: 'update' , method: :put %>
+  <%= render "form", url: owner_offer_path, action: 'update' , method: :put %>
+</div>

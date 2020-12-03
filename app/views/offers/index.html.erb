@@ -1,32 +1,55 @@
-<h1>OFFERS - VISITORS</h1>
+<div class="container pt-4 pb-4">
 
-<table class="table table-bordered">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Starts</th>
-      <th scope="col">Ends</th>
-      <th scope="col">Duration</th>
-      <th scope="col">Capacity</th>
-      <th scope="col">Parking Price</th>
-      <th scope="col">Discount</th>
-      <th scope="col">Select</th>
-    </tr>
-  </thead>
-  <tbody>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Visitor</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Offers</li>
+    </ol>
+  </nav>
 
-  <% @offers.each do |offer| %>
-    <tr>
-      <th scope="row"><%= offer.id %></th>
-      <td><%= offer.starts %></td>
-      <td><%= offer.ends %></td>
-      <td><%= offer.days %></td>
-      <td><%= offer.capacity %></td>
-      <td><%= offer.parking_price %></td>
-      <td><%= offer.discount %></td>
-      <td><%= link_to "Select this Offer", "#" %></td>
-    </tr>
-  <% end %>
+  <%= render "shared/flash" %>
 
-  </tbody>
-</table>
+  <div class="card shadow-lg border-0">
+    <div class="card-body p-0">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr class='text-center'>
+            <th scope="col">ID</th>
+            <th scope="col">Starts</th>
+            <th scope="col">Ends</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Capacity</th>
+            <th scope="col">Parking Price</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Select</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @offers.each do |offer| %>
+            <tr class='text-center'>
+              <th scope="row"><%= offer.id %></th>
+              <td><%= offer.starts %></td>
+              <td><%= offer.ends %></td>
+              <td><%= offer.days %></td>
+              <td><%= offer.capacity %></td>
+              <td><%= offer.parking_price %></td>
+              <td><%= offer.discount %></td>
+              <% if offer.visitor_id == current_visitor.id %>
+                <td><span class='badge badge-success'>Selected</span></td>
+              <% else %>
+                <td><%= link_to "Select this Offer", select_offer_path(offer) %></td>
+              <% end %>
+              <% if offer.visitor_id == current_visitor.id %>
+                <td><%= link_to "Delete this Offer", delete_offer_path(offer) %></td>
+              <% else %>
+                <td><span class='badge badge-secondary'>Not Selected</span></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

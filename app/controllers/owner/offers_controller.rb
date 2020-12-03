@@ -14,6 +14,7 @@ class Owner::OffersController < ApplicationController
     @offer = current_user.offers.build(offer_params)
 
     if @offer.save
+      flash[:message] = 'Offer successfully created.'
       redirect_to owner_offers_path
     else
       render :new
@@ -24,6 +25,7 @@ class Owner::OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
+      flash[:message] = 'Offer successfully updated.'
       redirect_to owner_offers_path
     else
       render :edit
@@ -32,6 +34,7 @@ class Owner::OffersController < ApplicationController
 
   def destroy
     if @offer.destroy
+      flash[:message] = 'Offer successfully deleted.'
       redirect_to owner_offers_path
     else
       redirect_to owner_offer_path(@offer)
