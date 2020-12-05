@@ -42,7 +42,7 @@
                 <td><%= link_to "Select this Offer", select_offer_path(offer) %></td>
               <% end %>
               <% if offer.visitor_id == current_visitor.id %>
-                <td><%= link_to "Delete this Offer", delete_offer_path(offer) %></td>
+                <td><%= link_to "Delete this Offer", delete_offer_path(offer), class: 'delete-offer' %></td>
               <% else %>
                 <td><span class='badge badge-secondary'>Not Selected</span></td>
               <% end %>
